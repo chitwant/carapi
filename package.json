@@ -1,0 +1,31 @@
+{
+  "name": "carbazar",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "bluebird": "^3.5.1",
+    "cookie-parser": "~1.4.3",
+    "cors": "^2.8.4",
+    "crypto": "^1.0.1",
+    "debug": "~2.6.9",
+    "email-templates": "^2.6.0",
+    "express": "~4.16.0",
+    "express-validation": "^1.0.2",
+    "express-validator": "^5.3.0",
+    "handlebars": "^4.0.11",
+    "http-errors": "~1.6.2",
+    "jade": "~1.11.0",
+    "joi": "^13.5.2",
+    "jsonwebtoken": "^8.3.0",
+    "mongoose": "^5.2.5",
+    "mongoose-type-email": "^1.0.9",
+    "morgan": "~1.9.0",
+    "nodemailer": "^4.6.7",
+    "nodemailer-smtp-transport": "^2.7.4",
+    "validator.js-asserts": "^3.1.0"
+  }
+}
