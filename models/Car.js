@@ -10,7 +10,7 @@ var carSchema = new Schema({
     type : Schema.Types.ObjectId,
     ref:'User'
   },
-    registration_no: { type: String },
+    registration_no: { type: String,unique: true },
     model: { type: String},
     speedometer: { type: Number}, 
     manufacturer : String,
