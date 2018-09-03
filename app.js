@@ -8,7 +8,7 @@ var cors = require('cors')
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var carsRouter = require('./routes/cars');
-var addCar = require('./routes/addcar');
+
 //Start Database connection
 // load mongoose package
 var mongoose = require("mongoose");
@@ -40,7 +40,7 @@ app.use(expressValidator());
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/cars', carsRouter);
-app.use('/addcar', addCar);
+
 
 
 
