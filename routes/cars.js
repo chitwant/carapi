@@ -6,7 +6,7 @@ var Car = require('../models/Car');
 
 //CAR API's
 //save/POST Car data in database
-router.route('/addcar').post(function (req, res) {
+router.route('/addcarrrrr').post(function (req, res) {
 
     var newCar = new Car({
         "user": req.body.userid,
