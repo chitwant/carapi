@@ -6,38 +6,38 @@ var Car = require('../models/Car');
 
 //CAR API's
 //save/POST Car data in database
-router.route('/addcarrrrr').post(function (req, res) {
+// router.route('/addcarrrrr').post(function (req, res) {
 
-    var newCar = new Car({
-        "user": req.body.userid,
-        "registration_no": req.body.registration_no,
-        "model": req.body.model,
-        "speedometer": req.body.speedometer,
-        "manufacturer": req.body.manufacturer,
-        "cost": req.body.cost,
-        "PhotoPath": req.body.photopath,
-        "status": "yes"       
-    });
+   //  var newCar = new Car({
+       // "user": req.body.userid,
+      //  "registration_no": req.body.registration_no,
+     //   "model": req.body.model,
+     //   "speedometer": req.body.speedometer,
+     //   "manufacturer": req.body.manufacturer,
+     //   "cost": req.body.cost,
+     //   "PhotoPath": req.body.photopath,
+     //   "status": "yes"       
+ //   });
 
     // get the current date
-    var currentDate = new Date();
-    newCar.created_at = currentDate;
-    newCar.updated_at = currentDate;
+//    var currentDate = new Date();
+//    newCar.created_at = currentDate;
+//    newCar.updated_at = currentDate;
 
-    newCar.save(function (err, car) {
-      try{
-        console.log(req.body.registration_no);
-        if (err) return res.send({ "status": "Error", "message": err });
-        return res.send({ "status": "Success", "message": "Car Instered", "cars": car });
-      }
-      catch (err) {
-        res.send({ "status": "Error", "message": err });
-        throw err
-      }
-    });
+ //   newCar.save(function (err, car) {
+//      try{
+//        console.log(req.body.registration_no);
+//        if (err) return res.send({ "status": "Error", "message": err });
+ //       return res.send({ "status": "Success", "message": "Car Instered", "cars": car });
+ //     }
+//      catch (err) {
+//        res.send({ "status": "Error", "message": err });
+//        throw err
+ //     }
+//    });
 
     //END check Email is registered or not
-});
+// });
 
 
 
