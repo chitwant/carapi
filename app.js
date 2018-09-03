@@ -23,7 +23,7 @@ mongoose.connect(config.database)
 
 
 var app = express();
-app.use(cors())
+app.use(cors({origin: 'https://webcar1.herokuapp.com'}));
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
