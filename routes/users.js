@@ -23,7 +23,6 @@ var templatesDir = path.resolve(__dirname, '../templates');
 
 //save/POST data in database
 router.route('/signUp').post(function (req, res) {
-
   //Validations
   //req.assert('firstname', error.firstnameVald).matches(/^[a-z]+$/);
   req.assert('firstname', error.firstnameReq).notEmpty();
@@ -51,16 +50,17 @@ router.route('/signUp').post(function (req, res) {
   newUser.created_at = currentDate;
   newUser.updated_at = currentDate; 
 
-
   //Start check Email is registered or not
   User.find({ "email": req.body.email }, function (err, user) {
     newUser.save(function (err, user) {
       try {
-        if (err) return res.send({ "status": "error", "message": "Email already Exists" });
-        if (!err) { 
-        
+        if (err) return res.send({ "status": "error", "message": err });
+        if (!err) {        
 
-        ///Email code
+        // Email code
+        var api_key = 'd0040a59c4adc468820f340d2d68b302-f45b080f-55640388';
+        var domain = 'demomail.customerdemourl.com';
+        var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain}); 
                // "register" is template name
           var template = new EmailTemplate(path.join(templatesDir, 'register'));
           var locals = {
@@ -74,14 +74,16 @@ router.route('/signUp').post(function (req, res) {
                 return console.error(err);
             }
             mailData = {
-              From : 'test@gmail.com',
+              from : 'CarBaazar<postmaster@demomail.customerdemourl.com>',
               to : req.body.email,
               subject : results.subject,
-              Text : results.text,
+              text : results.text,
               html : results.html
               }
-           var smtpProtocol = smtp.smtpTransport;
-           smtpProtocol.sendMail(mailData, function(error, info){
+          // var smtpProtocol = smtp.smtpTransport;
+          mailgun.messages().send(mailData, function (err, info) {
+          // smtpProtocol.sendMail(mailData, function(error, info){
+            if (err) return res.send({ "status": "error", "message": err });
             return res.send({ "status": "Success", "message": "User Registered Successfully!!", "users": user }); 
           }); 
         }
