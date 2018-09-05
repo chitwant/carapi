@@ -26,6 +26,7 @@
     "morgan": "~1.9.0",
     "nodemailer": "^4.6.7",
     "nodemailer-smtp-transport": "^2.7.4",
-    "validator.js-asserts": "^3.1.0"
+    "validator.js-asserts": "^3.1.0",    
+    "mailgun-js": "^0.20.0"
   }
 }
