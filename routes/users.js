@@ -58,9 +58,7 @@ router.route('/signUp').post(function (req, res) {
         if (!err) {        
 
         // Email code
-        var api_key = 'd0040a59c4adc468820f340d2d68b302-f45b080f-55640388';
-        var domain = 'demomail.customerdemourl.com';
-        var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain}); 
+     
                // "register" is template name
           var template = new EmailTemplate(path.join(templatesDir, 'register'));
           var locals = {
@@ -74,15 +72,15 @@ router.route('/signUp').post(function (req, res) {
                 return console.error(err);
             }
             mailData = {
-              from : 'CarBaazar<postmaster@demomail.customerdemourl.com>',
+              from : 'testing@gmail.com',
               to : req.body.email,
               subject : results.subject,
               text : results.text,
               html : results.html
               }
-          // var smtpProtocol = smtp.smtpTransport;
-          mailgun.messages().send(mailData, function (err, info) {
-          // smtpProtocol.sendMail(mailData, function(error, info){
+          var smtpProtocol = smtp.smtpTransport;
+        
+          smtpProtocol.sendMail(mailData, function(error, info){
             if (err) return res.send({ "status": "error", "message": err });
             return res.send({ "status": "Success", "message": "User Registered Successfully!!", "users": user }); 
           }); 
@@ -149,23 +147,21 @@ router.route('/signUp').post(function (req, res) {
     ownerid: req.body.ownerid
   };
        // Email code
-       var api_key = 'd0040a59c4adc468820f340d2d68b302-f45b080f-55640388';
-       var domain = 'demomail.customerdemourl.com';
-       var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain}); 
+     
   template.render(locals, function (err, results){
     if (err) {
         return console.error(err);
     }
     mailData = {
-      from : 'CarBaazar<postmaster@demomail.customerdemourl.com>',
+      from : 'testing@gmail.com',
       to : req.body.owneremail,
       subject : results.subject,
       Text : results.text,
       html : results.html
       }
-    // var smtpProtocol = smtp.smtpTransport;
-    mailgun.messages().send(mailData, function (err, info) {
-      // smtpProtocol.sendMail(mailData, function(error, info){
+    var smtpProtocol = smtp.smtpTransport;
+   
+      smtpProtocol.sendMail(mailData, function(error, info){
     if (error) {
       res.send({ "status": "Error", "message": error });
     } else {
@@ -190,9 +186,7 @@ router.route('/signUp').post(function (req, res) {
     console.log(req.body);
     try {
        // Email code
-       var api_key = 'd0040a59c4adc468820f340d2d68b302-f45b080f-55640388';
-       var domain = 'demomail.customerdemourl.com';
-       var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
+     
      // "register" is template name
      var template = new EmailTemplate(path.join(templatesDir, 'carreject'));
      var locals = {
@@ -206,15 +200,15 @@ router.route('/signUp').post(function (req, res) {
            return console.error(err);
        }
        mailData = {
-        from : 'CarBaazar<postmaster@demomail.customerdemourl.com>',
+        from : 'testing@gmail.com',
          to :  req.body.email,
          subject : results.subject,
          Text : results.text,
          html : results.html
          }
-  // var smtpProtocol = smtp.smtpTransport;
-  mailgun.messages().send(mailData, function (err, info) {
-    // smtpProtocol.sendMail(mailData, function(error, info){
+   var smtpProtocol = smtp.smtpTransport;
+
+     smtpProtocol.sendMail(mailData, function(error, info){
        if (error) {
          res.send({ "status": "Error", "message": error });
        } else {
